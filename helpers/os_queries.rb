@@ -1,35 +1,19 @@
-# helpers
-
-def linux?
-  %w(amazon debian redhat ubuntu suse opensuse).include?(os[:family])
-end
+# os helpers beyond built-in methods
 
 def rhel_family?
   %w(redhat amazon).include?(os[:family])
+end
+
+def debian_family?
+  %w(debian ubuntu).include?(os[:family])
 end
 
 def amazon?
   os[:family] == 'amazon'
 end
 
-def redhat?
-  os[:family] == 'redhat'
-end
-
-def debian?
-  %w(debian).include?(os[:family])
-end
-
 def ubuntu?
   %w(ubuntu).include?(os[:family])
-end
-
-def suse?
-  %w(suse opensuse).include?(os[:family])
-end
-
-def windows?
-  %w(windows).include?(os[:family])
 end
 
 def rhel6?

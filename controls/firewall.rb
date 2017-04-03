@@ -19,24 +19,24 @@ if rhel_family? && !docker?
   if configure_firewall
     describe 'Iptables' do
       it 'Base Rules Configured (Drop In, Allow 22, lo, icmp, rsync)' do
-        expect(iptables).to have_rule('DROP').with_chain('INPUT')
+        expect(iptables(chain: 'input')).to have_rule('DROP')
         base_iptables_rules.each do |rule|
-          expect(iptables).to have_rule(rule).with_chain('INPUT')
+          expect(iptables(chain: 'input')).to have_rule(rule)
         end
       end
     end
   else
     # Verify Default Iptables Configuration
-    describe 'Iptables', if: redhat? || amazon? do
+    describe 'Iptables' do
       it 'Not Configured' do
         default_iptables_chains.each do |chain|
-          expect(iptables).to have_rule('ACCEPT').with_chain(chain)
+          expect(iptables(chain: 'input')).to have_rule('ACCEPT')
         end
       end
     end
   end
 end
 
-if windows?
+if os.windows?
   # Place Holder
 end

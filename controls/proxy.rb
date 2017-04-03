@@ -1,5 +1,3 @@
-require_relative '../helpers/os_queries'
-
 configure_proxy = attribute('install_software', default: true, description: 'Install Software Packages')
 
 proxy_settings = %w(
@@ -13,7 +11,7 @@ proxy_settings = %w(
   NO_PROXY=localhost,127.0.0.1,10.0.2.,33.33.33.,.localdomain.com
 )
 
-if linux?
+if os.linux?
   if configure_proxy
     describe 'Proxy' do
       it 'Configured' do

@@ -1,5 +1,3 @@
-require_relative '../helpers/os_queries'
-
 deployment_type = attribute('deployment_type', default: 'ec2', description: 'Deployment Type')
 
 if deployment_type == 'ec2'
