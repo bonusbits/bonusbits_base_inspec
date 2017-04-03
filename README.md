@@ -44,4 +44,7 @@ suites:
 | cloudwatch_logs | inside_aws            | Boolean  | true          | true/false  |
 | epel            | configure_epel        | Boolean  | true          | true/false  |
 | epel            | install_epel_packages | Boolean  | true          | true/false  |
+| firewall        | configure_firewall    | Boolean  | true          | true/false  |
+| packages        | install_software      | Boolean  | true          | true/false  |
+| proxy           | configure_proxy       | Boolean  | true          | true/false  |
 | sudoers         | deployment_type       | String   | ecs           | ecs/docker  |
