@@ -29,7 +29,7 @@ if rhel_family? && !docker?
     # Verify Default Iptables Configuration
     describe 'Iptables' do
       it 'Not Configured' do
-        default_iptables_chains.each do |chain|
+        default_iptables_chains.each do |_chain|
           expect(iptables(chain: 'input')).to have_rule('ACCEPT')
         end
       end
