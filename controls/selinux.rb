@@ -1,6 +1,6 @@
 require_relative '../helpers/os_queries'
 
-unless container?
+unless docker?
   if redhat?
     describe 'SELinux' do
       it 'Disabled' do
