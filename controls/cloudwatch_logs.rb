@@ -1,3 +1,5 @@
+require_relative '../helpers/os_queries'
+
 inside_aws = attribute('inside_aws', default: false, description: 'Inside AWS')
 
 describe 'CloudWatch Logs' do

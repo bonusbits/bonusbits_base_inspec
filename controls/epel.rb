@@ -1,4 +1,4 @@
-# require_relative '../helpers/os_queries'
+require_relative '../helpers/os_queries'
 
 configure_epel = attribute('configure_epel', default: true, description: 'Was EPEL Configured?')
 install_epel_packages = attribute('install_epel_packages', default: true, description: 'Was EPEL Configured?')

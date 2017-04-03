@@ -1,3 +1,5 @@
+require_relative '../helpers/os_queries'
+
 unless container?
   if redhat?
     describe 'SELinux' do

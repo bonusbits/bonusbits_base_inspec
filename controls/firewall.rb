@@ -1,3 +1,5 @@
+require_relative '../helpers/os_queries'
+
 configure_firewall = attribute('configure_firewall', default: true, description: 'Configure Firewall')
 
 base_iptables_rules = %w(

@@ -1,3 +1,5 @@
+require_relative '../helpers/os_queries'
+
 if rhel_family?
   describe 'Yum Cron' do
     it 'yum-cron installed' do

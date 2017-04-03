@@ -1,3 +1,5 @@
+require_relative '../helpers/os_queries'
+
 install_software = attribute('install_software', default: true, description: 'Install Software Packages')
 
 rh_package_list = %w(vim-enhanced mlocate wget)

@@ -1,4 +1,4 @@
-# require_relative '../helpers/os_queries'
+require_relative '../helpers/os_queries'
 
 if linux?
   describe 'Nodeinfo Script' do
