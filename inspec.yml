@@ -1,0 +1,10 @@
+name: bonusbits_base
+title: InSpec BonusBits Base Profile
+maintainer: levon.becker.github@bonusbits.com
+copyright: Bonus Bits
+copyright_email: levon.becker.github@bonusbits.com
+license: MIT license
+summary: Check Bonus Bits Base Cookbook Configurations
+version: 1.0.0
+supports:
+  - os-family: unix
