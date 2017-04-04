@@ -17,9 +17,9 @@ default_iptables_chains = %w(
 
 if rhel_family? && !docker?
   if configure_firewall
-    describe 'Iptables' do
-      it 'Base Rules Configured (Drop In, Allow 22, lo, icmp, rsync)' do
-        expect(iptables(chain: 'input')).to have_rule('DROP')
+    describe 'IP Tables' do
+      it 'Base Rules Configured' do
+        expect(iptables).to have_rule('-P INPUT DROP')
         base_iptables_rules.each do |rule|
           expect(iptables(chain: 'input')).to have_rule(rule)
         end
@@ -27,10 +27,10 @@ if rhel_family? && !docker?
     end
   else
     # Verify Default Iptables Configuration
-    describe 'Iptables' do
-      it 'Not Configured' do
-        default_iptables_chains.each do |_chain|
-          expect(iptables(chain: 'input')).to have_rule('ACCEPT')
+    describe 'IP Tables' do
+      default_iptables_chains.each do |chain|
+        it "-P #{chain} ACCEPT" do
+          expect(iptables).to have_rule("-P #{chain} ACCEPT")
         end
       end
     end

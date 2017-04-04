@@ -9,6 +9,7 @@ if os.linux?
     describe 'EPEL Repo' do
       it 'Setup' do
         expect(file('/etc/yum.repos.d/epel.repo')).to exist
+        expect(file('/etc/yum.repos.d/epel.repo').content).to match(/enabled=1/)
       end
     end
     if install_epel_packages
@@ -20,11 +21,11 @@ if os.linux?
       end
     end
   else
-    # Verify EPEL is not setup ??
-    # Amazon Linux comes with EPEL Repo setup
+    # Verify EPEL is not setup
     describe 'EPEL Repo' do
       it 'Not Setup' do
-        expect(file('/etc/yum.repos.d/epel.repo')).to_not exist
+        # Amazon Linux comes with EPEL Repo setup but not enabled
+        expect(file('/etc/yum.repos.d/epel.repo')).to_not exist unless amazon?
         expect(file('/etc/yum.repos.d/epel.repo').content).to_not match(/enabled=1/)
       end
     end
