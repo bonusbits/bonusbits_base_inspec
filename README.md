@@ -39,12 +39,21 @@ suites:
 ```
 
 ## Attributes
-| Control         | Attribute             | Type     | Default       | Options     |
-| :-------------- | :-------------------- |:-------- | :------------ | :---------  |
-| cloudwatch_logs | inside_aws            | Boolean  | false         | true/false  |
-| epel            | configure_epel        | Boolean  | false         | true/false  |
-| epel            | install_epel_packages | Boolean  | false         | true/false  |
-| firewall        | configure_firewall    | Boolean  | false         | true/false  |
-| packages        | install_software      | Boolean  | true          | true/false  |
-| proxy           | configure_proxy       | Boolean  | false         | true/false  |
-| sudoers         | configure_sudoers     | Boolean  | false         | true/false  |
+| Control         | Attribute                 | Type     | Default       | Options                |
+| :-------------- | :------------------------ |:-------- | :------------ | :--------------------- |
+| cloudwatch_logs | inside_aws                | Boolean  | false         | true/false             |
+| cloudwatch_logs | configure_cloudwatch_logs | Boolean  | true          | true/false             |
+| epel            | configure_epel            | Boolean  | false         | true/false             |
+| epel            | install_epel_packages     | Boolean  | false         | true/false             |
+| firewall        | configure_firewall        | Boolean  | false         | true/false             |
+| node_info       | configure_node_info       | Boolean  | true          | true/false             |
+| packages        | install_packages          | Boolean  | true          | true/false             |
+| packages        | amazon_packages           | Array    | long list     | array of package names |
+| packages        | redhat_packages           | Array    | long list     | array of package names |
+| packages        | debian_packages           | Array    | long list     | array of package names |
+| packages        | suse_packages             | Array    | long list     | array of package names |
+| packages        | windows_packages          | Array    | short list    | array of package names |
+| proxy           | configure_proxy           | Boolean  | false         | true/false             |
+| selinux         | configure_selinux         | Boolean  | true          | true/false             |
+| sudoers         | configure_sudoers         | Boolean  | false         | true/false             |
+| yum_cron        | configure_yum_cron        | Boolean  | true          | true/false             |

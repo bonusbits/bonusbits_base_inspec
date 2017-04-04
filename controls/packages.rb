@@ -1,44 +1,144 @@
 require_relative '../helpers/os_queries'
 
-install_software = attribute('install_software', default: true, description: 'Install Software Packages')
+install_packages = attribute('install_packages', default: true, description: 'Install Software Packages')
 
-rh_package_list = %w(vim-enhanced mlocate wget)
-deb_package_list = %w(vim mlocate wget)
+amazon_packages = attribute(
+  'amazon_packages',
+  default: %w(
+    aws-cli
+    ca-certificates
+    curl
+    git
+    gzip
+    htop
+    mlocate
+    net-tools
+    openssh-clients
+    openssh-server
+    openssl
+    procps
+    sudo
+    upstart
+    util-linux
+    vim-enhanced
+    which
+  ),
+  description: 'Amazon Linux Software Packages'
+)
+
+redhat_packages = attribute(
+  'redhat_packages',
+  default: %w(
+    aws-cli
+    ca-certificates
+    curl
+    git
+    gzip
+    htop
+    mlocate
+    net-tools
+    openssh-clients
+    openssh-server
+    openssl
+    procps
+    sudo
+    upstart
+    util-linux
+    vim-enhanced
+    which
+  ),
+  description: 'Redhat Linux Software Packages'
+)
+
+debian_packages = attribute(
+  'debian_packages',
+  default: %w(
+    aws-cli
+    curl
+    git
+    gzip
+    htop
+    mlocate
+    net-tools
+    openssl
+    procps
+    sudo
+    util-linux
+    vim
+    which
+  ),
+  description: 'Debian Linux Software Packages'
+)
+
+suse_packages = attribute(
+  'suse_packages',
+  default: %w(
+    aws-cli
+    curl
+    git
+    gzip
+    htop
+    mlocate
+    net-tools
+    openssl
+    procps
+    sudo
+    util-linux
+    vim
+    which
+  ),
+  description: 'Suse Linux Software Packages'
+)
+
+windows_packages = attribute(
+  'windows_packages',
+  default: %w(
+    aws-cli
+    powershell
+    sysinternals
+    git
+  ),
+  description: 'Suse Linux Software Packages'
+)
 
 # Check if Installed
-if rhel_family?
-  if install_software
-    describe 'RHEL Packages' do
-      it 'Installed' do
-        rh_package_list.each do |package|
-          expect(package(package)).to be_installed
-        end
-      end
-    end
-  else
-    # Split out because wget is often installed by default.
-    describe 'RHEL Packages' do
-      it 'Not Installed' do
-        expect(package('vim-enhanced')).to_not be_installed
-        expect(package('mlocate')).to_not be_installed
+if os.redhat? && install_packages
+  describe 'RHEL Packages' do
+    it 'Installed' do
+      redhat_packages.each do |package|
+        expect(package(package)).to be_installed
       end
     end
   end
-elsif debian_family?
-  if install_software
-    describe 'Debian Packages' do
-      it 'Installed' do
-        deb_package_list.each do |package|
-          expect(package(package)).to be_installed
-        end
+elsif amazon? && install_packages
+  describe 'Amazon Packages' do
+    it 'Installed' do
+      amazon_packages.each do |package|
+        expect(package(package)).to be_installed
       end
     end
-  else
-    describe 'Debian Packages' do
-      it 'Not Installed' do
-        expect(package('htop')).to_not be_installed
-        expect(package('vim')).to_not be_installed
-        expect(package('mlocate')).to_not be_installed
+  end
+elsif debian_family? && install_packages
+  describe 'Debian Packages' do
+    it 'Installed' do
+      debian_packages.each do |package|
+        expect(package(package)).to be_installed
+      end
+    end
+  end
+elsif os.suse? && install_packages
+  describe 'Suse Packages' do
+    it 'Installed' do
+      suse_packages.each do |package|
+        expect(package(package)).to be_installed
+      end
+    end
+  end
+elsif os.windows? && install_packages
+  describe 'Windows Packages' do
+    it 'Installed' do
+      windows_packages.each do |package|
+        expect(package(package)).to be_installed
       end
     end
   end

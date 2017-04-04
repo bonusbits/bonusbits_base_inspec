@@ -1,6 +1,7 @@
 inside_aws = attribute('inside_aws', default: false, description: 'Inside AWS')
+configure_cloudwatch_logs = attribute('configure_cloudwatch_logs', default: true, description: 'Configure CloudWatch Logs')
 
-if os.linux?
+if os.linux? && configure_cloudwatch_logs
   describe 'CloudWatch Logs' do
     it 'awslogs installed' do
       expect(package('awslogs')).to be_installed
