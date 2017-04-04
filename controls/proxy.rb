@@ -1,4 +1,4 @@
-configure_proxy = attribute('install_software', default: true, description: 'Install Software Packages')
+configure_proxy = attribute('configure_proxy', default: false, description: 'Configure Proxy')
 
 proxy_settings = %w(
   ftp_proxy=http://10.0.2.2:8888

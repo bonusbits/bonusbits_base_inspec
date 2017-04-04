@@ -1,6 +1,6 @@
 require_relative '../helpers/os_queries'
 
-configure_firewall = attribute('configure_firewall', default: true, description: 'Configure Firewall')
+configure_firewall = attribute('configure_firewall', default: false, description: 'Configure Firewall')
 
 base_iptables_rules = %w(
   -p tcp -m tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT

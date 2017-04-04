@@ -35,16 +35,16 @@ suites:
         - name: bonusbits_base
           git: https://github.com/bonusbits/inspec_bonusbits_base.git
       attributes:
-        chef_version: 12.18.31
+        inside_aws: true
 ```
 
 ## Attributes
 | Control         | Attribute             | Type     | Default       | Options     |
 | :-------------- | :-------------------- |:-------- | :------------ | :---------  |
-| cloudwatch_logs | inside_aws            | Boolean  | true          | true/false  |
-| epel            | configure_epel        | Boolean  | true          | true/false  |
-| epel            | install_epel_packages | Boolean  | true          | true/false  |
-| firewall        | configure_firewall    | Boolean  | true          | true/false  |
+| cloudwatch_logs | inside_aws            | Boolean  | false         | true/false  |
+| epel            | configure_epel        | Boolean  | false         | true/false  |
+| epel            | install_epel_packages | Boolean  | false         | true/false  |
+| firewall        | configure_firewall    | Boolean  | false         | true/false  |
 | packages        | install_software      | Boolean  | true          | true/false  |
-| proxy           | configure_proxy       | Boolean  | true          | true/false  |
-| sudoers         | deployment_type       | String   | ecs           | ecs/docker  |
+| proxy           | configure_proxy       | Boolean  | false         | true/false  |
+| sudoers         | configure_sudoers     | Boolean  | false         | true/false  |
