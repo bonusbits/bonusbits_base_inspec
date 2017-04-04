@@ -29,12 +29,10 @@ amazon_packages = attribute(
 redhat_packages = attribute(
   'redhat_packages',
   default: %w(
-    aws-cli
     ca-certificates
     curl
     git
     gzip
-    htop
     mlocate
     net-tools
     openssh-clients
@@ -53,7 +51,6 @@ redhat_packages = attribute(
 debian_packages = attribute(
   'debian_packages',
   default: %w(
-    aws-cli
     curl
     git
     gzip
@@ -73,7 +70,6 @@ debian_packages = attribute(
 suse_packages = attribute(
   'suse_packages',
   default: %w(
-    aws-cli
     curl
     git
     gzip
@@ -93,7 +89,6 @@ suse_packages = attribute(
 windows_packages = attribute(
   'windows_packages',
   default: %w(
-    aws-cli
     powershell
     sysinternals
     git
