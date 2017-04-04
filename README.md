@@ -45,7 +45,6 @@ suites:
 | cloudwatch_logs | configure_cloudwatch_logs | Boolean  | true          | true/false             |
 | epel            | configure_epel            | Boolean  | false         | true/false             |
 | epel            | install_epel_packages     | Boolean  | false         | true/false             |
-| firewall        | configure_firewall        | Boolean  | false         | true/false             |
 | node_info       | configure_node_info       | Boolean  | true          | true/false             |
 | packages        | install_packages          | Boolean  | true          | true/false             |
 | packages        | amazon_packages           | Array    | long list     | array of package names |
