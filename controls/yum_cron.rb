@@ -1,7 +1,7 @@
 require_relative '../helpers/os_queries'
 configure_yum_cron = attribute('configure_yum_cron', default: true, description: 'Configure Yum Cron')
 
-if configure_yum_cron && rhel_family?
+if configure_yum_cron && amazon?
   describe 'Yum Cron' do
     it 'yum-cron installed' do
       expect(package('yum-cron')).to be_installed
