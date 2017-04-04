@@ -41,7 +41,7 @@ redhat_packages = attribute(
     procps
     sudo
     upstart
-    util-linux
+    util-linux-ng
     vim-enhanced
     which
   ),
