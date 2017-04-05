@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## 1.0.2 - 04/04/2017 - Levon Becker
+* Fixed configure_sudoers attribute
+
 ## 1.0.1 - 04/04/2017 - Levon Becker
 * Added some more conditions to tests
 * Changed software package lists to attributes so they can be over-road

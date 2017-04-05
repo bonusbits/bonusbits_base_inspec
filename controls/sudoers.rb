@@ -1,4 +1,4 @@
-configure_sudoers = attribute('deployment_type', default: false, description: 'Configure Sudoers')
+configure_sudoers = attribute('configure_sudoers', default: false, description: 'Configure Sudoers')
 
 if configure_sudoers && rhel_family?
   describe 'Sudoers Config' do

@@ -13,7 +13,7 @@ proxy_settings = %w(
 
 if os.linux?
   if configure_proxy
-    describe 'Proxy' do
+    describe 'Network Proxy' do
       it 'Configured' do
         proxy_settings.each do |proxy_setting|
           expect(file('/etc/environment').content).to match(proxy_setting)
@@ -21,7 +21,7 @@ if os.linux?
       end
     end
   else
-    describe 'Proxy' do
+    describe 'Network Proxy' do
       it 'Not Configured' do
         proxy_settings.each do |proxy_setting|
           expect(file('/etc/environment').content).to_not match(proxy_setting)

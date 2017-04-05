@@ -1,7 +1,7 @@
 require_relative '../helpers/os_queries'
 
-configure_epel = attribute('configure_epel', default: false, description: 'Was EPEL Configured?')
-install_epel_packages = attribute('install_epel_packages', default: false, description: 'Was EPEL Configured?')
+configure_epel = attribute('configure_epel', default: false, description: 'Configure EPEL')
+install_epel_packages = attribute('install_epel_packages', default: false, description: 'Install EPEL Packages')
 
 if os.redhat?
   if configure_epel
