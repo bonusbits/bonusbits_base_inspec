@@ -1,6 +1,6 @@
 require_relative '../helpers/os_queries'
 
-install_packages = attribute('install_packages', default: true, description: 'Install Software Packages')
+install_packages = attribute('install_packages', default: true, description: 'Install Software Packages').to_s.eql?('true') ? true : false
 
 amazon_packages = attribute(
   'amazon_packages',

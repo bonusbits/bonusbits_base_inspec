@@ -1,5 +1,5 @@
 require_relative '../helpers/os_queries'
-configure_yum_cron = attribute('configure_yum_cron', default: true, description: 'Configure Yum Cron')
+configure_yum_cron = attribute('configure_yum_cron', default: true, description: 'Configure Yum Cron').to_s.eql?('true') ? true : false
 
 if configure_yum_cron && amazon?
   describe 'Yum Cron' do

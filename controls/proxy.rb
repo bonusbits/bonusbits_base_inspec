@@ -1,4 +1,4 @@
-configure_proxy = attribute('configure_proxy', default: false, description: 'Configure Proxy')
+configure_proxy = attribute('configure_proxy', default: false, description: 'Configure Proxy').to_s.eql?('true') ? true : false
 
 proxy_settings = %w(
   ftp_proxy=http://10.0.2.2:8888

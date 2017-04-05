@@ -1,6 +1,6 @@
 require_relative '../helpers/os_queries'
 
-configure_selinux = attribute('configure_selinux', default: true, description: 'Configure Selinux')
+configure_selinux = attribute('configure_selinux', default: true, description: 'Configure Selinux').to_s.eql?('true') ? true : false
 
 unless docker?
   if os.redhat? && configure_selinux

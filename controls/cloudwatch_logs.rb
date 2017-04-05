@@ -1,5 +1,5 @@
-inside_aws = attribute('inside_aws', default: false, description: 'Inside AWS')
-configure_cloudwatch_logs = attribute('configure_cloudwatch_logs', default: true, description: 'Configure CloudWatch Logs')
+inside_aws = attribute('inside_aws', default: false, description: 'Inside AWS').to_s.eql?('true') ? true : false
+configure_cloudwatch_logs = attribute('configure_cloudwatch_logs', default: true, description: 'Configure CloudWatch Logs').to_s.eql?('true') ? true : false
 
 if os.linux? && configure_cloudwatch_logs
   describe 'CloudWatch Logs' do
