@@ -97,43 +97,45 @@ windows_packages = attribute(
 )
 
 # Check if Installed
-if os.redhat? && install_packages
-  describe 'RHEL Packages' do
-    it 'Installed' do
-      redhat_packages.each do |package|
-        expect(package(package)).to be_installed
+if install_packages
+  if os.redhat?
+    describe 'RHEL Packages' do
+      it 'Installed' do
+        redhat_packages.each do |package|
+          expect(package(package)).to be_installed
+        end
       end
     end
-  end
-elsif amazon? && install_packages
-  describe 'Amazon Packages' do
-    it 'Installed' do
-      amazon_packages.each do |package|
-        expect(package(package)).to be_installed
+  elsif amazon?
+    describe 'Amazon Packages' do
+      it 'Installed' do
+        amazon_packages.each do |package|
+          expect(package(package)).to be_installed
+        end
       end
     end
-  end
-elsif debian_family? && install_packages
-  describe 'Debian Packages' do
-    it 'Installed' do
-      debian_packages.each do |package|
-        expect(package(package)).to be_installed
+  elsif debian_family?
+    describe 'Debian Packages' do
+      it 'Installed' do
+        debian_packages.each do |package|
+          expect(package(package)).to be_installed
+        end
       end
     end
-  end
-elsif os.suse? && install_packages
-  describe 'Suse Packages' do
-    it 'Installed' do
-      suse_packages.each do |package|
-        expect(package(package)).to be_installed
+  elsif os.suse?
+    describe 'Suse Packages' do
+      it 'Installed' do
+        suse_packages.each do |package|
+          expect(package(package)).to be_installed
+        end
       end
     end
-  end
-elsif os.windows? && install_packages
-  describe 'Windows Packages' do
-    it 'Installed' do
-      windows_packages.each do |package|
-        expect(package(package)).to be_installed
+  elsif os.windows?
+    describe 'Windows Packages' do
+      it 'Installed' do
+        windows_packages.each do |package|
+          expect(package(package)).to be_installed
+        end
       end
     end
   end
