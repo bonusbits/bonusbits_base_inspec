@@ -1,4 +1,4 @@
-configure_node_info = attribute('configure_node_info', default: true, description: 'Configure Node Info').to_s.eql?('true') ? true : false
+configure_node_info = attribute('configure_node_info', default: true, description: 'Configure Node Info')
 
 if configure_node_info
   if os.linux?

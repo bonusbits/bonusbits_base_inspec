@@ -1,8 +1,5 @@
 # CHANGE LOG
 
-## 1.0.3 - 04/05/2017 - Levon Becker
-* Added workaround for boolean attributes that are passed as strings from kitchen
-
 ## 1.0.2 - 04/04/2017 - Levon Becker
 * Fixed configure_sudoers attribute
 

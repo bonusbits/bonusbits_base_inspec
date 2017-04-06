@@ -1,4 +1,4 @@
-configure_sudoers = attribute('configure_sudoers', default: false, description: 'Configure Sudoers').to_s.eql?('true') ? true : false
+configure_sudoers = attribute('configure_sudoers', default: false, description: 'Configure Sudoers')
 
 if configure_sudoers && rhel_family?
   describe 'Sudoers Config' do

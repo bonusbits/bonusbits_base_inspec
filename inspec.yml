@@ -5,7 +5,7 @@ copyright: Bonus Bits
 copyright_email: levon.becker.github@bonusbits.com
 license: MIT license
 summary: Check Bonus Bits Base Cookbook Configurations
-version: 1.0.3
+version: 1.0.2
 supports:
   - os-family: linux
 supports:
