@@ -1,5 +1,11 @@
-inside_aws = attribute('inside_aws', default: false, description: 'Inside AWS')
-configure_cloudwatch_logs = attribute('configure_cloudwatch_logs', default: true, description: 'Configure CloudWatch Logs')
+inside_aws = attribute('inside_aws', default: false, description: 'Inside AWS').to_s.eql?('true') ? true : false
+configure_cloudwatch_logs = attribute('configure_cloudwatch_logs', default: true, description: 'Configure CloudWatch Logs').to_s.eql?('true') ? true : false
+
+debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
+if debug
+  puts "ATTR: Inside AWS              (#{inside_aws})"
+  puts "ATTR: Configure CloudWatch Logs (#{configure_cloudwatch_logs})"
+end
 
 if os.linux? && configure_cloudwatch_logs
   describe 'CloudWatch Logs' do

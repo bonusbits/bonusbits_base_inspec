@@ -1,7 +1,13 @@
 require_relative '../helpers/os_queries'
 
-configure_epel = attribute('configure_epel', default: false, description: 'Configure EPEL')
-install_epel_packages = attribute('install_epel_packages', default: false, description: 'Install EPEL Packages')
+configure_epel = attribute('configure_epel', default: false, description: 'Configure EPEL').to_s.eql?('true') ? true : false
+install_epel_packages = attribute('install_epel_packages', default: false, description: 'Install EPEL Packages').to_s.eql?('true') ? true : false
+
+debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
+if debug
+  puts "ATTR: Configure EPEL         (#{configure_epel})"
+  puts "ATTR: Install EPEL Packages  (#{install_epel_packages})"
+end
 
 if os.redhat?
   if configure_epel

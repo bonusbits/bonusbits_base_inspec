@@ -41,6 +41,7 @@ suites:
 ## Attributes
 | Control         | Attribute                 | Type     | Default       | Options                |
 | :-------------- | :------------------------ |:-------- | :------------ | :--------------------- |
+| all             | debug                     | Boolean  | false         | true/false             |
 | cloudwatch_logs | inside_aws                | Boolean  | false         | true/false             |
 | cloudwatch_logs | configure_cloudwatch_logs | Boolean  | true          | true/false             |
 | epel            | configure_epel            | Boolean  | false         | true/false             |

@@ -1,4 +1,7 @@
-configure_node_info = attribute('configure_node_info', default: true, description: 'Configure Node Info')
+configure_node_info = attribute('configure_node_info', default: true, description: 'Configure Node Info').to_s.eql?('true') ? true : false
+
+debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
+puts "ATTR: Configure NodeInfo     (#{configure_node_info})" if debug
 
 if configure_node_info
   if os.linux?

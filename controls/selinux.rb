@@ -1,6 +1,9 @@
 require_relative '../helpers/os_queries'
 
-configure_selinux = attribute('configure_selinux', default: true, description: 'Configure Selinux')
+configure_selinux = attribute('configure_selinux', default: true, description: 'Configure Selinux').to_s.eql?('true') ? true : false
+
+debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
+puts "ATTR: Configure SeLinux      (#{configure_selinux})" if debug
 
 unless docker?
   if os.redhat? && configure_selinux

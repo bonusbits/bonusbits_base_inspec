@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 1.0.3 - 04/05/2017 - Levon Becker
+* Added logic for dealing with string as boolean attributes
+* Added debug attribute that will trigger output of all the attributes.
+
 ## 1.0.2 - 04/04/2017 - Levon Becker
 * Fixed configure_sudoers attribute
 
