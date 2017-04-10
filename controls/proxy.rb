@@ -19,16 +19,14 @@ if os.linux?
     describe 'Network Proxy' do
       it 'Configured' do
         proxy_settings.each do |proxy_setting|
-          expect(file('/etc/environment').content).to match(proxy_setting)
+          expect(file('/etc/profile.d/proxy.sh').content).to match(proxy_setting)
         end
       end
     end
   else
     describe 'Network Proxy' do
       it 'Not Configured' do
-        proxy_settings.each do |proxy_setting|
-          expect(file('/etc/environment').content).to_not match(proxy_setting)
-        end
+        expect(file('/etc/profile.d/proxy.sh')).to_not exist
       end
     end
   end

@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 1.0.4 - 04/06/2017 - Levon Becker
+* Added aws profile test
+* Changed proxy to look for profile.d/proxy.sh instead of /etc/environment setup
+
 ## 1.0.3 - 04/05/2017 - Levon Becker
 * Added logic for dealing with string as boolean attributes
 * Added debug attribute that will trigger output of all the attributes.
