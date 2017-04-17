@@ -1,4 +1,5 @@
 require_relative '../helpers/os_queries'
+
 configure_yum_cron = attribute('configure_yum_cron', default: true, description: 'Configure Yum Cron').to_s.eql?('true') ? true : false
 
 debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false

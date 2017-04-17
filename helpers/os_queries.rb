@@ -39,3 +39,8 @@ end
 def docker?
   File.exist?('/.dockerenv')
 end
+
+def ec2?
+  # TODO: Add some improved logic for other OSs and ECS Containers?
+  File.directory?('/home/ec2-user')
+end

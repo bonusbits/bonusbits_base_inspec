@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## 1.0.5 - 04/17/2017 - Levon Becker
+* Switch attribute/arg for inside_aws to discovery method.
+
 ## 1.0.4 - 04/06/2017 - Levon Becker
 * Added aws profile test
 * Changed proxy to look for profile.d/proxy.sh instead of /etc/environment setup
