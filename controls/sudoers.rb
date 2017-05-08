@@ -1,3 +1,5 @@
+require_relative '../helpers/os_queries'
+
 configure_sudoers = attribute('configure_sudoers', default: false, description: 'Configure Sudoers').to_s.eql?('true') ? true : false
 
 debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false

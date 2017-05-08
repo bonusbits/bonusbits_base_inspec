@@ -1,4 +1,6 @@
-inside_aws = attribute('inside_aws', default: false, description: 'Inside AWS').to_s.eql?('true') ? true : false
+require_relative '../helpers/os_queries'
+
+inside_aws = ec2?
 configure_cloudwatch_logs = attribute('configure_cloudwatch_logs', default: true, description: 'Configure CloudWatch Logs').to_s.eql?('true') ? true : false
 
 debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false

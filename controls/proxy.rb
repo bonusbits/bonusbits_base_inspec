@@ -1,3 +1,5 @@
+require_relative '../helpers/os_queries'
+
 configure_proxy = attribute('configure_proxy', default: false, description: 'Configure Proxy').to_s.eql?('true') ? true : false
 
 debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false

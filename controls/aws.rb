@@ -1,4 +1,6 @@
-inside_aws = attribute('inside_aws', default: false, description: 'Inside AWS').to_s.eql?('true') ? true : false
+require_relative '../helpers/os_queries'
+
+inside_aws = ec2?
 configure_aws_profile = attribute('configure_aws_profile', default: true, description: 'Configure Proxy').to_s.eql?('true') ? true : false
 
 debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false

@@ -1,6 +1,6 @@
 # InSpec Bonus Bits Base Cookbook Profile
 [![CircleCI](https://circleci.com/gh/bonusbits/inspec_bonusbits_base.svg?style=shield)](https://circleci.com/gh/bonusbits/inspec_bonusbits_base)
-[![Join the chat at https://gitter.im/bonusbits/inspec_bonusbits_base](https://badges.gitter.im/bonusbits/inspec_bonusbits_base.svg)](https://gitter.im/bonusbits/inspec_bonusbits_base?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/bonusbits](https://badges.gitter.im/bonusbits/bonusbits.svg)](https://gitter.im/bonusbits?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Used to run integration tests for when using the [bonusbits_base](https://github.com/bonusbits/bonusbits_base) Chef Cookbook. 
 

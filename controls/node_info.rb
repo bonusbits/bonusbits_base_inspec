@@ -1,3 +1,5 @@
+require_relative '../helpers/os_queries'
+
 configure_node_info = attribute('configure_node_info', default: true, description: 'Configure Node Info').to_s.eql?('true') ? true : false
 
 debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
