@@ -20,10 +20,14 @@ if install_java
     #   it { should be_installed }
     #   its('version') { should eq java_version }
     # end
-    describe 'Java' do
+    describe 'Java Install' do
       it 'Installed' do
         expect(package(java_package_name)).to be_installed
-        expect(package(java_package_name).version).to be(java_version) if specify_version
+      end
+      if specify_version
+        it "Version: (#{java_version})" do
+          expect(package(java_package_name).version).to match(java_version)
+        end
       end
     end
   end
