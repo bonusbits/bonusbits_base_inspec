@@ -46,10 +46,16 @@ suites:
 | all             | debug                     | Boolean  | false         | true/false             |
 | aws             | inside_aws                | Boolean  | false         | true/false             |
 | aws             | configure_aws_profile     | Boolean  | true          | true/false             |
+| backups         | configure_backups         | Boolean  | false         | true/false             |
+| cloudwatch      | configure_cloudwatch      | Boolean  | false         | true/false             |
 | cloudwatch_logs | inside_aws                | Boolean  | false         | true/false             |
 | cloudwatch_logs | configure_cloudwatch_logs | Boolean  | true          | true/false             |
 | epel            | configure_epel            | Boolean  | false         | true/false             |
 | epel            | install_epel_packages     | Boolean  | false         | true/false             |
+| java            | install_java              | Boolean  | false         | true/false             |
+| java            | java_package_name         | String   | java-1.8.0-openjdk | N/A               |
+| java            | specify_version           | Boolean  | false         | true/false             |
+| java            | java_version              | String   | 1.8.0.151-1.b12.35.amzn1 | N/A         |
 | node_info       | configure_node_info       | Boolean  | true          | true/false             |
 | packages        | install_packages          | Boolean  | true          | true/false             |
 | packages        | amazon_packages           | Array    | long list     | array of package names |
