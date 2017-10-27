@@ -16,10 +16,6 @@ end
 # Check if Installed
 if install_java
   if os.linux?
-    # describe package(java_package_name) do
-    #   it { should be_installed }
-    #   its('version') { should eq java_version }
-    # end
     describe 'Java Install' do
       it 'Installed' do
         expect(package(java_package_name)).to be_installed
