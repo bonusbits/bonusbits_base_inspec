@@ -1,6 +1,6 @@
 # CHANGE LOG
 
-## 1.1.0 - 06/14/2017 - Levon Becker
+## 1.1.0 - 10/27/2017 - Levon Becker
 * Added Backups Tests
 * Added CloudWatch Tests
 * Simplified configure args local variable to be named the same
