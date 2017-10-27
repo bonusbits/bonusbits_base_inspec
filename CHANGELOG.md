@@ -1,5 +1,12 @@
 # CHANGE LOG
 
+## 1.1.0 - 06/14/2017 - Levon Becker
+* Added Backups Tests
+* Added CloudWatch Tests
+* Simplified configure args local variable to be named the same
+* Added Gemfile.lock to keep CircleCI in-line for testing
+* Added Java Install Tests
+
 ## 1.0.5 - 04/17/2017 - Levon Becker
 * Switch attribute/arg for inside_aws to discovery method.
 

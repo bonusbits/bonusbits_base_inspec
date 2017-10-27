@@ -1,17 +1,17 @@
 require_relative '../helpers/os_queries'
 
 inside_aws = ec2?
-configure_aws_profile = attribute('configure_aws_profile', default: true, description: 'Configure Proxy').to_s.eql?('true') ? true : false
+configure = attribute('configure_aws_profile', default: true, description: 'Configure Proxy').to_s.eql?('true') ? true : false
 
 debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
-puts "ATTR: Configure AWS Profile  (#{configure_aws_profile})" if debug
+puts "ATTR: Configure AWS Profile  (#{configure})" if debug
 
 profile_settings = %w(
   AWS_REGION
 )
 
 if os.linux? && inside_aws
-  if configure_aws_profile
+  if configure
     describe 'AWS Profile' do
       it 'Configured' do
         profile_settings.each do |value|

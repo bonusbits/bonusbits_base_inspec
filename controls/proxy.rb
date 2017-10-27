@@ -1,9 +1,9 @@
 require_relative '../helpers/os_queries'
 
-configure_proxy = attribute('configure_proxy', default: false, description: 'Configure Proxy').to_s.eql?('true') ? true : false
+configure = attribute('configure_proxy', default: false, description: 'Configure Proxy').to_s.eql?('true') ? true : false
 
 debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
-puts "ATTR: Configure Proxy        (#{configure_proxy})" if debug
+puts "ATTR: Configure Proxy        (#{configure})" if debug
 
 proxy_settings = %w(
   ftp_proxy=http://10.0.2.2:8888
@@ -17,7 +17,7 @@ proxy_settings = %w(
 )
 
 if os.linux?
-  if configure_proxy
+  if configure
     describe 'Network Proxy' do
       it 'Configured' do
         proxy_settings.each do |proxy_setting|
