@@ -12,6 +12,3 @@ end
 
 desc 'Rubocop'
 task default: %w(style:ruby)
-
-desc 'Circle CI Tasks'
-task circleci: %w(style:ruby)

@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 1.1.0 - 10/07/2019 - Levon Becker
+* Updated CircleCI Config to v2.1
+* Updated Gemfile to ChefDK v4.3.13 Gems
+
 ## 1.1.0 - 10/27/2017 - Levon Becker
 * Added Backups Tests
 * Added CloudWatch Tests
