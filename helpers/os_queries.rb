@@ -1,19 +1,19 @@
 # os helpers beyond built-in methods
 
 def rhel_family?
-  %w(redhat amazon).include?(os[:family])
+  %w[redhat amazon].include?(os[:family])
 end
 
 def debian_family?
-  %w(debian ubuntu).include?(os[:family])
+  %w[debian ubuntu].include?(os[:family])
 end
 
-def amazon?
-  os[:family] == 'amazon'
+def amazon_linux?
+  os[:name] == 'amazon'
 end
 
 def ubuntu?
-  %w(ubuntu).include?(os[:family])
+  %w[ubuntu].include?(os[:family])
 end
 
 def rhel6?
@@ -36,6 +36,10 @@ def release?(test_version)
   os[:release] == test_version
 end
 
+def redhat?
+  os[:name] == 'redhat'
+end
+
 def docker?
   File.exist?('/.dockerenv')
 end
@@ -44,3 +48,19 @@ def ec2?
   # TODO: Add some improved logic for other OSs and ECS Containers?
   File.directory?('/home/ec2-user')
 end
+
+# def ec2?
+#   fqdn = node['fqdn']
+#   return true if fqdn =~ /^ip-.*\.compute\.internal$/
+#
+#   case node['platform_family']
+#   when 'rhel'
+#     ec2_user = '/home/ec2-user'
+#     ec2_net_script = '/etc/sysconfig/network-scripts/ec2net-functions'
+#     ::File.directory?(ec2_user) || ::File.exist?(ec2_net_script)
+#   when 'windows'
+#     ::File.directory?('C:/Users/ec2-user')
+#   else
+#     false
+#   end
+# end

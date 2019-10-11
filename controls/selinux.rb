@@ -1,16 +1,18 @@
 require_relative '../helpers/os_queries'
 
-configure = attribute('configure_selinux', default: true, description: 'Configure Selinux').to_s.eql?('true') ? true : false
+test_selinux = attribute('test_selinux', value: true, description: 'Configure Selinux').to_s.eql?('true') ? true : false
 
-debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
-puts "ATTR: Configure SeLinux      (#{configure})" if debug
+debug = attribute('debug', value: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
+puts "ATTR: Test SeLinux              (#{test_selinux})" if debug
 
-unless docker?
-  if os.redhat? && configure
-    describe 'SELinux Setting' do
-      it 'Disabled' do
-        expect(file('/etc/selinux/config').content).to match(/SELINUX=disabled/)
-      end
+control 'selinux' do
+  impact 1.0
+  title ''
+  only_if { redhat? && test_selinux }
+
+  unless docker?
+    describe file('/etc/selinux/config') do
+      its('content') { should include 'SELINUX=disabled' }
     end
   end
 end
