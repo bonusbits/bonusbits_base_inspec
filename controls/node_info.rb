@@ -1,22 +1,22 @@
+require_relative '../helpers/node_attributes'
 require_relative '../helpers/os_queries'
 
-configure = attribute('configure_node_info', default: true, description: 'Configure Node Info').to_s.eql?('true') ? true : false
+# Attributes
+debug = attribute('debug', value: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
+test_nodeinfo = attribute('test_nodeinfo', value: true, description: 'Test NodeInfo').to_s.eql?('true') ? true : false
 
-debug = attribute('debug', default: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
-puts "ATTR: Configure NodeInfo     (#{configure})" if debug
+# Debug Outputs
+puts "ATTR: Test NodeInfo             (#{test_nodeinfo})" if debug
 
-if configure
-  if os.linux?
-    describe 'Nodeinfo Script' do
-      it '/usr/local/bin/nodeinfo' do
-        expect(file('/usr/local/bin/nodeinfo')).to exist
-      end
-    end
-  elsif os.windows?
-    describe 'Nodeinfo Script' do
-      it 'C:/Windows/System32/nodeinfo.cmd' do
-        expect(file('C:/Windows/System32/nodeinfo.cmd')).to exist
-      end
-    end
+control 'nodeinfo' do
+  impact 1.0
+  title ''
+  only_if { test_nodeinfo }
+
+  describe file('/etc/chef/.chef-attributes.json') do
+    it { should exist }
+  end
+  describe file('/usr/local/bin/nodeinfo') do
+    it { should exist }
   end
 end
