@@ -5,7 +5,6 @@ test_sudoers = attribute('test_sudoers', value: false, description: 'Test Sudoer
 debug = attribute('debug', value: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
 puts "ATTR: Test Sudoers              (#{test_sudoers})" if debug
 
-
 control 'sudoers' do
   impact 1.0
   title ''

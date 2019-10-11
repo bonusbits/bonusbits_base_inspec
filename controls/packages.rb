@@ -25,5 +25,4 @@ control 'packages' do
       it { should be_installed }
     end
   end
-
 end
