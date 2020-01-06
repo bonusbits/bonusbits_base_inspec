@@ -13,9 +13,9 @@ jobs:
       GEM_ROOT: /opt/chefdk/embedded/lib/ruby/gems/2.6.0
     steps:
       - checkout
-      #- run:
-      #    name: Install Rspec Junit Formatter Gem
-      #    command: gem install rspec_junit_formatter -v 0.4.1
+      - run:
+          name: Install Rspec Junit Formatter Gem
+          command: /opt/chefdk/embedded/bin/gem install rspec_junit_formatter -v 0.4.1
       - run:
           name: Run Rake Task
           command: /opt/chefdk/embedded/bin/rake style:ruby --trace
