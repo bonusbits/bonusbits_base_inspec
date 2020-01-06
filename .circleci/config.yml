@@ -5,7 +5,7 @@ timezone:
 jobs:
   style_ruby:
     docker:
-      - image: chef/chefdk:4.3.13
+      - image: chef/chefdk:4.5.0
     working_directory: ~/circulate
     environment:
       GEM_HOME: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems
@@ -14,14 +14,14 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Create Reports Directory
+          command: mkdir reports
+      - run:
           name: Install Rspec Junit Formatter Gem
           command: /opt/chefdk/embedded/bin/gem install rspec_junit_formatter -v 0.4.1
       - run:
           name: Run Rake Task
           command: /opt/chefdk/embedded/bin/rake style:ruby --trace
-      - run:
-          name: Create Reports Directory
-          command: mkdir reports
       - store_test_results:
           path: reports/
 
