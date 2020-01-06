@@ -1,12 +1,15 @@
-require_relative '../helpers/node_attributes'
 require_relative '../helpers/os_queries'
 
+# Fetch Chef Node Attributes
+node = node_attributes
+configure = node['bonusbits_base']['proxy']['configure']
+
 # Attributes
-debug = attribute('debug', value: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
-test_proxy = attribute('test_proxy', value: true, description: 'Test Proxy').to_s.eql?('false') ? true : false
+debug = input('debug', value: false, description: 'Enable Debugging')
+test_proxy = input('test_proxy', value: configure, description: 'Test Proxy')
 
 # Debug Outputs
-puts "ATTR: Test Proxy                (#{test_proxy})" if debug
+puts "DEBUG: Test Proxy                (#{test_proxy})" if debug
 
 control 'proxy' do
   impact 1.0
@@ -38,12 +41,11 @@ control 'proxy' do
     end
 
     # /etc/apt/apt.conf
-    node = node_values
     describe file('/etc/apt/apt.conf') do
       it { should exist }
       it { should be_owned_by 'root' }
-      its('content') { should include "Acquire::http::proxy \"#{node['proxy']['host_port_url']}\";" }
-      its('content') { should include "Acquire::https::proxy \"#{node['proxy']['host_port_url']}\";" }
+      its('content') { should include "Acquire::http::proxy \"#{node['bonusbits_base']['proxy']['host_port_url']}\";" }
+      its('content') { should include "Acquire::https::proxy \"#{node['bonusbits_base']['proxy']['host_port_url']}\";" }
     end
   end
 

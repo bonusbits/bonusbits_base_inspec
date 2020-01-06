@@ -1,9 +1,13 @@
 require_relative '../helpers/os_queries'
 
-test_selinux = attribute('test_selinux', value: true, description: 'Configure Selinux').to_s.eql?('true') ? true : false
+# Fetch Chef Node Attributes
+node = node_attributes
+configure = node['bonusbits_base']['security']['selinux']['configure']
 
-debug = attribute('debug', value: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
-puts "ATTR: Test SeLinux              (#{test_selinux})" if debug
+test_selinux = input('test_selinux', value: configure, description: 'Configure Selinux')
+
+debug = input('debug', value: false, description: 'Enable Debugging')
+puts "DEBUG: Test SeLinux              (#{test_selinux})" if debug
 
 control 'selinux' do
   impact 1.0

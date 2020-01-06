@@ -8,4 +8,4 @@ summary: Check Bonus Bits Base Cookbook Configurations
 version: 2.0.0
 supports:
   - os-family: linux
-inspec_version: "~> 4.10.4"
+inspec_version: "~> 4.18.0"

@@ -1,4 +1,12 @@
 def node_attributes
+  # Can only be called from control not in helpers
+
+  # This will not work because it will be ran locally and not on the test instance
+  # require 'json'
+  # JSON.parse(File.read('/etc/chef/.chef-attributes.json'))
+
+  # json is an Inspec Resource so it looks on the instance and not locally
+  # Must be called from inspec control
   json('/etc/chef/.chef-attributes.json').params
 end
 
@@ -10,12 +18,17 @@ def kitchen?
   node_attributes['bonusbits_base']['deployment_method'] == 'kitchen'
 end
 
-def node_values
+def base_node_values
+  # Can only be called from control not in helpers
   node_attributes['bonusbits_base']
 end
 
 def prod?
   node_attributes['bonusbits_base']['deployment_environment'] == 'prod'
+end
+
+def install_java?
+  node_attributes['bonusbits_base']['java']['install']
 end
 
 def proxy_settings

@@ -1,12 +1,11 @@
-require_relative '../helpers/node_attributes'
 require_relative '../helpers/os_queries'
 
 # Attributes
-debug = attribute('debug', value: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
-test_nodeinfo = attribute('test_nodeinfo', value: true, description: 'Test NodeInfo').to_s.eql?('true') ? true : false
+debug = input('debug', value: false, description: 'Enable Debugging')
+test_nodeinfo = input('test_nodeinfo', value: true, description: 'Test NodeInfo')
 
 # Debug Outputs
-puts "ATTR: Test NodeInfo             (#{test_nodeinfo})" if debug
+puts "DEBUG: Test NodeInfo             (#{test_nodeinfo})" if debug
 
 control 'nodeinfo' do
   impact 1.0

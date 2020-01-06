@@ -1,16 +1,24 @@
 require_relative '../helpers/os_queries'
 
-test_java = attribute('test_java', value: false, description: 'Test Java').to_s.eql?('true') ? true : false
-java_package_name = attribute('java_package_name', value: 'java-1.8.0-openjdk', description: 'Java Version')
-java_specify_version = attribute('java_specify_version', value: false, description: 'Specify Version').to_s.eql?('true') ? true : false
-java_version = attribute('java_version', value: '1.8.0.151-1.b12.35.amzn1', description: 'Java Version')
+# Fetch Chef Node Attributes
+node = node_attributes
+install_java = node['bonusbits_base']['java']['install']
+java_package = node['bonusbits_base']['java']['package']
+java_ver = node['bonusbits_base']['java']['version']
+specify_version = node['bonusbits_base']['java']['specify_version']
 
-debug = attribute('debug', value: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
+# Still allowing overriding inputs, but should be auto-populated with Node Attributes
+test_java = input('test_java', value: install_java, description: 'Test Java')
+java_package_name = input('java_package_name', value: java_package, description: 'Java Package Name')
+java_specify_version = input('java_specify_version', value: specify_version, description: 'Specify Version')
+java_version = input('java_version', value: java_ver, description: 'Java Version')
+
+debug = input('debug', value: false, description: 'Enable Debugging')
 if debug
-  puts "ATTR: Test Java                 (#{test_java})"
-  puts "ATTR: Java Package              (#{java_package_name})"
-  puts "ATTR: Specify Version           (#{java_specify_version})"
-  puts "ATTR: Java Version              (#{java_version})"
+  puts "DEBUG: Test Java                 (#{test_java})"
+  puts "DEBUG: Java Package              (#{java_package_name})"
+  puts "DEBUG: Specify Version           (#{java_specify_version})"
+  puts "DEBUG: Java Version              (#{java_version})"
 end
 
 control 'java' do
