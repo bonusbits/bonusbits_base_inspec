@@ -8,6 +8,9 @@
 * Removed string to boolean input syntax. Found it was giving odd false positive results.
 * Switched to ruby 2.6.5 container instead of chefdk for CircleCI
 * I tried combining all the logic to one call for the json node attributes, but the converge order is screwy and couldn't get it to work reliably.
+* Added gem_source control
+* Added bash_profile control
+* Added chef control
 
 ## 2.0.0 - 12/09/2019 - Levon Becker
 * Updated CircleCI Config to v2.1
