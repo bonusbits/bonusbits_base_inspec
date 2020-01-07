@@ -7,10 +7,6 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.5
     working_directory: ~/circulate
-    environment:
-      GEM_HOME: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems
-      GEM_PATH: /opt/chefdk/embedded/lib/ruby/gems/2.6.0
-      GEM_ROOT: /opt/chefdk/embedded/lib/ruby/gems/2.6.0
     steps:
       - checkout
       - run:
