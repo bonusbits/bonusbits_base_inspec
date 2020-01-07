@@ -4,6 +4,11 @@
 * Get jUnit test results working for rubocop rake task
 * Add logic to packages control to test that packages aren't installed if chef attribute package install is false
 
+## 2.1.0 - 01/06/2019 - Levon Becker
+* Removed string to boolean input syntax. Found it was giving odd false positive results.
+* Switched to ruby 2.6.5 container instead of chefdk for CircleCI
+* I tried combining all the logic to one call for the json node attributes, but the converge order is screwy and couldn't get it to work reliably.
+
 ## 2.0.0 - 12/09/2019 - Levon Becker
 * Updated CircleCI Config to v2.1
 * Updated Gemfile to ChefDK v4.5.0 Gems
