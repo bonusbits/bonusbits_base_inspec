@@ -5,7 +5,7 @@ timezone:
 jobs:
   style_ruby:
     docker:
-      - image: chef/chefdk:4.3.13
+      - image: circleci/ruby:2.6.5
     working_directory: ~/circulate
     environment:
       GEM_HOME: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems
@@ -13,15 +13,15 @@ jobs:
       GEM_ROOT: /opt/chefdk/embedded/lib/ruby/gems/2.6.0
     steps:
       - checkout
-      #- run:
-      #    name: Install Rspec Junit Formatter Gem
-      #    command: gem install rspec_junit_formatter -v 0.4.1
-      - run:
-          name: Run Rake Task
-          command: /opt/chefdk/embedded/bin/rake style:ruby --trace
       - run:
           name: Create Reports Directory
           command: mkdir reports
+      - run:
+          name: Bundle Gems
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+      - run:
+          name: Run Rake Task
+          command: bundle exec rake style:ruby --trace
       - store_test_results:
           path: reports/
 

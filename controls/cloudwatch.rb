@@ -1,14 +1,16 @@
 require_relative '../helpers/os_queries'
 
-test_cloudwatch = attribute('test_cloudwatch', value: true, description: 'Test CloudWatch').to_s.eql?('true') ? true : false
+# Can not call method in Describe call, but can use local variable as condition.
+inside_aws = aws?
+test_cloudwatch = input('test_cloudwatch', value: inside_aws, description: 'Test CloudWatch')
 
-debug = attribute('debug', value: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
-puts "ATTR: Test CloudWatch           (#{test_cloudwatch})" if debug
+debug = input('debug', value: false, description: 'Enable Debugging')
+puts "DEBUG: Test CloudWatch           (#{test_cloudwatch})" if debug
 
 control 'cloudwatch' do
   impact 1.0
   title ''
-  only_if { os.linux? && test_cloudwatch }
+  only_if { os.linux? && test_cloudwatch && inside_aws }
 
   describe file('/opt/aws-scripts-mon/mon-put-instance-data.pl') do
     it { should be_file }

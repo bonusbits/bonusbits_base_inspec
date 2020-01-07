@@ -1,12 +1,12 @@
 require_relative '../helpers/os_queries'
 
 inside_aws = ec2?
-test_aws = attribute('test_aws', value: true, description: 'Test AWS').to_s.eql?('true') ? true : false
+test_aws = input('test_aws', value: inside_aws, description: 'Test AWS')
 
-debug = attribute('debug', value: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
+debug = input('debug', value: false, description: 'Enable Debugging')
 if debug
-  puts "ATTR: Inside AWS                (#{inside_aws})"
-  puts "ATTR: Test AWS                  (#{test_aws})"
+  puts "DEBUG: Inside AWS                (#{inside_aws})"
+  puts "DEBUG: Test AWS                  (#{test_aws})"
 end
 
 control 'aws' do

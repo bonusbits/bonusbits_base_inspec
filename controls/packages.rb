@@ -1,23 +1,31 @@
-require_relative '../helpers/node_attributes'
 require_relative '../helpers/os_queries'
 
-test_packages = attribute('test_packages', value: true, description: 'Test Packages').to_s.eql?('true') ? true : false
+# TODO: Add Logic to test packages aren't installed when install attribute set to false. Such as, awscli, cd git, vim, etc.
 
-debug = attribute('debug', value: false, description: 'Enable Debugging').to_s.eql?('true') ? true : false
-puts "ATTR: Test Packages             (#{test_packages})" if debug
+# Fetch Chef Node Attributes
+node = node_attributes
+install_packages = node['bonusbits_base']['packages']['install']
+
+test_packages = input('test_packages', value: install_packages, description: 'Test Packages')
+
+debug = input('debug', value: false, description: 'Enable Debugging')
+puts "DEBUG: Test Packages             (#{test_packages})" if debug
 
 control 'packages' do
   impact 1.0
   title ''
   only_if { test_packages }
 
-  node = node_values
   if amazon_linux?
-    packages_list = node['packages']['amazon']['packages']
+    if amazon_linux1?
+      packages_list = node['bonusbits_base']['packages']['amazon_linux1']['packages']
+    elsif amazon_linux2?
+      packages_list = node['bonusbits_base']['packages']['amazon_linux2']['packages']
+    end
   elsif redhat?
-    packages_list = node['packages']['redhat']['packages']
+    packages_list = node['bonusbits_base']['packages']['redhat']['packages']
   elsif ubuntu?
-    packages_list = node['packages']['ubuntu']['packages']
+    packages_list = node['bonusbits_base']['packages']['ubuntu']['packages']
   end
 
   packages_list.each do |package|

@@ -1,11 +1,22 @@
 # CHANGE LOG
 
-## 2.0.1 - TODO List - Levon Becker
+## x.x.x - TODO List - Levon Becker
 * Get jUnit test results working for rubocop rake task
+* Add logic to packages control to test that packages aren't installed if chef attribute package install is false
 
-## 2.0.0 - 10/11/2019 - Levon Becker
+## 2.1.0 - 01/06/2019 - Levon Becker
+* Removed string to boolean input syntax. Found it was giving odd false positive results.
+* Switched to ruby 2.6.5 container instead of chefdk for CircleCI
+* I tried combining all the logic to one call for the json node attributes, but the converge order is screwy and couldn't get it to work reliably.
+* Added gem_source control
+* Added bash_profile control
+* Added chef control
+
+## 2.0.0 - 12/09/2019 - Levon Becker
 * Updated CircleCI Config to v2.1
-* Updated Gemfile to ChefDK v4.3.13 Gems
+* Updated Gemfile to ChefDK v4.5.0 Gems
+* Switched attributes to inputs (new syntax & backwards breaking)
+* Added node_attributes methods (requires writing chef attributes to json done by bonusbits_base)
 * Updated default to value attributes
 * Remove yum_cron
 * Wrapped logic with control syntax. Can now call specific controls and ignore inspec attributes.
@@ -16,6 +27,9 @@
 * Removed Windows support
 * Added Inspec Version check to inspec.yml
 * Updated os method calls to work with newer version and discover Amazon Linux correctly again
+* Merged inspec_bootstrap inspec profile into this profile to deprecate bootstrap profile (chef control)
+* Added bash_profile control
+* Added gem_source control (not tested yet)
 
 ## 1.1.0 - 10/27/2017 - Levon Becker
 * Added Backups Tests
