@@ -1,25 +1,38 @@
 AllCops:
+  TargetRubyVersion: 2.6.5
   Exclude:
-    - 'berks-cookbooks/**/*'
     - '.idea/**/*'
     - '.git/**/*'
-    - '.kitchen/**/*'
     - '*.lock'
     - 'vendor/**/*'
 
-Documentation:
+Layout/AlignParameters:
   Enabled: false
 
-Metrics/LineLength:
-  Max: 200
+Layout/CaseIndentation:
+  IndentOneStep: false
+
+Metrics/AbcSize:
+  Max: 28
 
 Metrics/BlockLength:
   Enabled: false
 
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 256
+
 Metrics/MethodLength:
-  Max: 60
+  Max: 128
   CountComments: false
-  Enabled: true
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Style/Documentation:
+  Enabled: false
 
 Style/Encoding:
   Enabled: false
@@ -28,15 +41,6 @@ Style/SignalException:
   EnforcedStyle: only_raise
 
 Style/EmptyLiteral:
-  Enabled: false
-
-CyclomaticComplexity:
-  Enabled: false
-
-AlignParameters:
-  Enabled: false
-
-Encoding:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
