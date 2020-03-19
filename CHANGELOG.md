@@ -1,6 +1,7 @@
 # CHANGE LOG
 
 ## 2.1.1 - 03/19/2020 - Levon Becker
+* Renamed repo from inspec_bonusbits_base to bonusbits_base_inspec
 * Updated min inspec version to 4.18.85
 * Moved ToDo list to TODO.md
 * Cleaned up Gemfile
@@ -8,6 +9,7 @@
     * Removed unused gems
     * Added Ruby version 2.6.5
 * Cleaned up rubocop config and eliminated warnings by adding department to each rule that was missing it
+* Updated Readme with renamed repo name
 
 ## 2.1.0 - 01/06/2020 - Levon Becker
 * Removed string to boolean input syntax. Found it was giving odd false positive results.
