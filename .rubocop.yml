@@ -4,6 +4,7 @@ AllCops:
     - '.idea/**/*'
     - '.git/**/*'
     - '*.lock'
+    - 'vendor/**/*'
 
 Layout/AlignParameters:
   Enabled: false
